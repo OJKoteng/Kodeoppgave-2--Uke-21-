@@ -11,12 +11,38 @@
     <section>
         <input type="text" id="tekstboks" name="tekstboks" placeholder="Skriv inn tekst her" required>
         <br><br>
-        <button onclick="generer()">Finn antall ord</button>
+        <button onclick="antall()">Finn antall ord</button>
         <br><br>
-        <button onclick="generer()">Gjør om til store bokstaver</button>
+        <button onclick="stor()">Gjør om til store bokstaver</button>
         <br><br>
-        <button onclick="generer()">Gjør om til små bokstaver</button>
+        <button onclick="liten()">Gjør om til små bokstaver</button>
+        <p id="utskrift"></p>
     </section>
+
+    <script>
+        function antall() {
+
+            let tekst = document.getElementById("tekstboks").value;
+            // Splitter opp teksten ord for ord med .split(/\s+/) og .trim() forhindrer uheldige mellomrom av bruker. 
+            let ord = tekst.trim().split(/\s+/)
+
+            //Filtrerer ut tomme tekst strenger
+            let filtrerteOrd = ord.filter(word => word.length > 0);
+            //Denne siste funksjonen skaffer antall ord 
+            let ordteller = filtrerteOrd.length;
+
+            document.getElementById("utskrift").innerHTML = `Antall ord: ${ordteller}`;
+        }
+
+        function stor() {
+
+            let tekst = document.getElementById("tekstboks").value;
+
+            let forstørring = `${tekst.toUpperCase()}`;
+
+            document.getElementById("utskrift").innerHTML = forstørring;
+        }
+    </script>
 </body>
 
 </html>
