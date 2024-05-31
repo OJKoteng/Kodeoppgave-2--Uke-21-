@@ -45,7 +45,8 @@
                 let epost = `${fornavn.substring(0, 3).toLowerCase()}.${mellomnavn.substring(0, 1).toLowerCase()}.${etternavn.toLowerCase()}@alf.no`
                 document.getElementById("output").innerHTML = epost;
             } else {
-
+                let epost = `${fornavn}-${""}${etternavn.substring(0, 2)}@alf.no`
+                document.getElementById("output").innerHTML = epost;
             }
 
         }
