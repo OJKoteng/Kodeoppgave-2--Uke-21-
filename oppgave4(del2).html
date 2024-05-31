@@ -14,12 +14,22 @@
     </section>
 
     <section>
-        <input type="number" name="alder" id="alder" placeholder="Skriv inn alder" required>
+        <input type="number" name="barn" id="barn" placeholder="Skriv antall barn" required>
         <br><br>
     </section>
 
     <section>
-        <input type="number" name="kilometer" id="kilometer" placeholder="Skriv inn antall km" required>
+        <input type="number" name="voksen" id="voksen" placeholder="Skriv antall voksne" required>
+        <br><br>
+    </section>
+
+    <section>
+        <input type="number" name="pensjonist" id="pensjonist" placeholder="Skriv antall pensjonister" required>
+        <br><br>
+    </section>
+
+    <section>
+        <input type="number" name="kilometer" id="kilometer" placeholder="Skriv antall kilometer" required>
         <br><br>
     </section>
 
@@ -32,30 +42,29 @@
     <script>
         function beregn() {
 
-            let alder = document.getElementById("alder").value.trim();
+            let barn = document.getElementById("barn").value.trim();
+
+            let voksen = document.getElementById("voksen").value.trim();
+
+            let pensjonist = document.getElementById("pensjonist").value.trim();
 
             let kilometer = document.getElementById("kilometer").value.trim();
 
-            if (alder === "" || kilometer === "") {
-                output = `Du har ikke skrevet inn noe!`
+            if (barn === "" && voksen === "" && pensjonist === "" && kilometer === "") {
+                output = "Du har ikke skrevet inn noe!";
+                document.getElementById("output").innerHTML = output;
+                return;
             }
 
-            else if (alder <= 12) {
-                let ung = kilometer * 3.52 * 0.5
-                output = `Fergebilletten koster ${ung.toFixed(2)}kr for en tur på ${kilometer}km, for en passasjer som er ${alder}år gammel. God tur!`
+            let barnpris = barn * 3.52 * 0.5 * kilometer;
+            let voksenpris = voksen * 3.52 * kilometer;
+            let pensjonistpris = pensjonist * 3.52 * 0.2 * kilometer;
 
-            } else if (alder >= 67) {
-                let gammel = kilometer * 3.52 * 0.2
-                output = `Fergebilletten koster ${gammel.toFixed(2)}kr for en tur på ${kilometer}km, for en passasjer som er ${alder}år gammel. God tur!`
-            }
+            let totalpris = barnpris + voksenpris + pensjonistpris;
 
-            else {
-                let normal = kilometer * 3.52
-                output = `Fergebilletten koster ${normal.toFixed(2)}kr for en tur på ${kilometer}km, for en passasjer som er ${alder}år gammel. God tur!`
-            }
+            output = `Fergebilletten koster ${totalpris.toFixed(2)} kr for en tur på ${kilometer} km. God tur!`;
 
             document.getElementById("output").innerHTML = output;
-
 
         }
     </script>
