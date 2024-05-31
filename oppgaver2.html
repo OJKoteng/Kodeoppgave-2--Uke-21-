@@ -24,6 +24,31 @@
 
         <div id="output"></div>
 
+        <script>
+
+            function innlogging() {
+
+                let brukernavnverdi = document.getElementById("brukernavn").value;
+
+                let passordverdi = document.getElementById("passord").value;
+
+                let brukernavn = `Nemo`;
+
+                let passord = `Nightwish`;
+
+                if (brukernavnverdi === brukernavn && passordverdi === passord) {
+
+                    document.getElementById("output").innerHTML = `Velkommen! Du er logget inn som ${brukernavn}`;
+
+                } else {
+                    document.getElementById("output").innerHTML = `Brukernavnet eller passordet var feil`;
+                }
+
+
+            }
+
+        </script>
+
     </section>
 
 </body>
