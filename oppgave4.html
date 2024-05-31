@@ -26,7 +26,36 @@
     <section>
         <button onclick="beregn()">Beregn Pris</button>
         <br><br>
+        <div id="output"></div>
     </section>
+
+    <script>
+        function beregn() {
+
+            let alder = document.getElementById("alder").value.trim();
+
+            let kilometer = document.getElementById("kilometer").value.trim();
+
+
+            if (alder <= 12) {
+                let ung = kilometer * 3.52 * 0.5
+                output = `Fergebilletten koster ${ung.toFixed(2)}kr for en tur på ${kilometer}km, for en passasjer som er ${alder}år gammel. God tur!`
+
+            } else if (alder >= 67) {
+                let gammel = kilometer * 3.52 * 0.2
+                output = `Fergebilletten koster ${gammel.toFixed(2)}kr for en tur på ${kilometer}km, for en passasjer som er ${alder}år gammel. God tur!`
+            }
+
+            else {
+                let normal = kilometer * 3.52
+                output = `Fergebilletten koster ${normal.toFixed(2)}kr for en tur på ${kilometer}km, for en passasjer som er ${alder}år gammel. God tur!`
+            }
+
+            document.getElementById("output").innerHTML = output;
+
+
+        }
+    </script>
 </body>
 
 </html>
