@@ -10,7 +10,9 @@
 <body>
 
     <section>
+
         <h1>E-post Generator</h1>
+
     </section>
 
     <section>
@@ -24,7 +26,31 @@
         <input type="text" id="etternavn" name="etternavn" placeholder="Etternavn" required>
         <br><br>
 
+        <button onclick="beregn()">Generer E-post</button>
+        <div id="output"></div>
+
     </section>
+
+    <script>
+        function beregn() {
+
+            let fornavn = document.getElementById("fornavn").value.trim();
+
+            let mellomnavn = document.getElementById("mellomnavn").value.trim();
+
+            let etternavn = document.getElementById("etternavn").value.trim();
+
+
+            if (fornavn && mellomnavn && etternavn) {
+                let epost = `${fornavn.substring(0, 3).toLowerCase()}.${mellomnavn.substring(0, 1).toLowerCase()}.${etternavn.toLowerCase()}@alf.no`
+                document.getElementById("output").innerHTML = epost;
+            } else {
+
+            }
+
+        }
+
+    </script>
 </body>
 
 </html>
